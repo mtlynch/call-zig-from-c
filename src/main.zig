@@ -33,6 +33,10 @@ fn execute(
     };
 }
 
+fn get_capabilities(_: [*c]evmc.evmc_vm) callconv(.C) evmc.evmc_capabilities_flagset {
+    return 0;
+}
+
 fn destroy(_: [*c]evmc.evmc_vm) callconv(.C) void {
     return;
 }
@@ -43,7 +47,7 @@ export fn evmc_create_example_vm() *evmc.evmc_vm {
         .name = "dummy name",
         .version = "0.0.1",
         .execute = &execute,
-        .get_capabilities = null,
+        .get_capabilities = &get_capabilities,
         .set_option = null,
         .destroy = &destroy,
     };
