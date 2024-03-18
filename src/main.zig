@@ -20,7 +20,7 @@ fn execute(
     _: usize,
 ) callconv(.C) evmc.evmc_result {
     return evmc.evmc_result{
-        .status_code = evmc.EVMC_SUCCESS,
+        .status_code = evmc.EVMC_FAILURE,
         .gas_left = 0,
         .gas_refund = 0,
         .output_data = null,
