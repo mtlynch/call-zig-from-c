@@ -10,6 +10,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+    lib.addIncludePath(.{ .path = "/home/mike/evmc/include/evmc" });
     b.installArtifact(lib);
     _ = lib.getEmittedH();
 
@@ -18,6 +19,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+    main_tests.addIncludePath(.{ .path = "/home/mike/evmc/include/evmc" });
 
     const run_main_tests = b.addRunArtifact(main_tests);
 
