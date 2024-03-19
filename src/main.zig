@@ -34,14 +34,14 @@ fn execute(
 }
 
 fn get_capabilities(_: [*c]evmc.evmc_vm) callconv(.C) evmc.evmc_capabilities_flagset {
-    return 0;
+    return evmc.EVMC_CAPABILITY_EVM1;
 }
 
 fn destroy(_: [*c]evmc.evmc_vm) callconv(.C) void {
     return;
 }
 
-export fn evmc_create_example_vm() *evmc.evmc_vm {
+export fn evmc_create() *evmc.evmc_vm {
     var vm: evmc.evmc_vm = evmc.evmc_vm{
         .abi_version = evmc.EVMC_ABI_VERSION,
         .name = "dummy name",
