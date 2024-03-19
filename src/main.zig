@@ -41,10 +41,10 @@ fn destroy(_: [*c]evmc.evmc_vm) callconv(.C) void {
     return;
 }
 
-export fn evmc_create() *evmc.evmc_vm {
+export fn evmc_create() callconv(.C) *evmc.evmc_vm {
     var vm: evmc.evmc_vm = evmc.evmc_vm{
         .abi_version = evmc.EVMC_ABI_VERSION,
-        .name = "dummy name",
+        .name = "eth-zvm",
         .version = "0.0.1",
         .execute = &execute,
         .get_capabilities = &get_capabilities,
