@@ -1,14 +1,6 @@
-const std = @import("std");
-const c_void = @TypeOf(undefined);
-
 const evmc = @cImport({
     @cInclude("evmc.h");
 });
-const testing = std.testing;
-
-export fn add(a: i32, b: i32) i32 {
-    return a + b + evmc.EVMC_FAILURE;
-}
 
 fn execute(
     _: [*c]evmc.evmc_vm,
@@ -52,8 +44,4 @@ export fn evmc_create() callconv(.C) *evmc.evmc_vm {
         .destroy = &destroy,
     };
     return &vm;
-}
-
-test "basic add functionality" {
-    try testing.expectEqual(add(3, 7), 10);
 }
